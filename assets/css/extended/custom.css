@@ -16,6 +16,13 @@ iframe {
     border: 1px solid var(--border);
 }
 
+/* 调整主内容区域 */
 .main {
-    max-width: 950px !important;
+    max-width: 900px !important;
+}
+
+/* 隐藏首页欢迎区块 */
+.main .home-info,
+.home-info {
+    display: none !important;
 }
