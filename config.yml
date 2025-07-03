@@ -51,25 +51,6 @@ languages:
 
           - 欢迎探索并与我交流。
 
-  en:
-    languageName: "English"
-    weight: 2
-    taxonomies:
-      category: categories
-      tag: tags
-      series: series
-    menu:
-      main:
-        - name: Archive
-          url: archives
-          weight: 5
-        - name: Search
-          url: search/
-          weight: 10
-        - name: Tags
-          url: tags/
-          weight: 10
-
 outputs:
   home:
     - HTML
@@ -134,7 +115,7 @@ params:
 
   editPost:
     URL: "https://github.com/wcl95716/panda-hugo-PaperMod/tree/main/content"
-    Text: "Suggest Changes" # edit text
+    Text: "编辑此页面" # edit text
     appendFilePath: true # to append file path to Edit link
 
   # label:
