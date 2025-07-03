@@ -1,4 +1,4 @@
-name: Deploy Hugo PaperMod Demo to Pages
+name: Deploy Panda's Blog to Pages
 
 on:
   push:
@@ -48,7 +48,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: exampleSite
+          ref: main
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
