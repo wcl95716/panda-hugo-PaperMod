@@ -9,6 +9,7 @@ on:
     branches:
       - master
       - exampleSite
+      - main
   workflow_dispatch:
     # manual run
     inputs:
