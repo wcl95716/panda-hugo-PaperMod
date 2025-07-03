@@ -4,6 +4,7 @@ baseURL: "https://wcl95716.github.io/panda-hugo-PaperMod/"
 title: Panda's Blog
 copyright: "© [Panda](https://github.com/wcl95716)"
 theme: [hugo-PaperMod]
+defaultContentLanguage: "zh"
 
 enableInlineShortcodes: true
 enableRobotsTXT: true
