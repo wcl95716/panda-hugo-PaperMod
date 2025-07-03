@@ -15,3 +15,43 @@ iframe {
 .entry-cover img {
     border: 1px solid var(--border);
 }
+
+/* 增加文章宽度 */
+.post-content {
+    max-width: 900px !important;
+    margin: 0 auto !important;
+}
+
+.post {
+    max-width: 900px !important;
+    margin: 0 auto !important;
+}
+
+.post-header {
+    max-width: 900px !important;
+    margin: 0 auto !important;
+}
+
+/* 调整文章容器宽度 */
+.entry-content {
+    max-width: 900px !important;
+    margin: 0 auto !important;
+}
+
+/* 调整主内容区域 */
+.main {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+/* 调整目录宽度，与文章对齐 */
+.toc {
+    max-width: 900px !important;
+    margin: 0 auto !important;
+}
+
+/* 调整目录容器 */
+.toc-container {
+    max-width: 900px !important;
+    margin: 0 auto !important;
+}
