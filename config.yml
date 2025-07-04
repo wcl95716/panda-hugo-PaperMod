@@ -179,12 +179,12 @@ markup:
     renderer:
       unsafe: true
   highlight:
-    noClasses: false
-    anchorLineNos: true
-    codeFences: true
-    guessSyntax: true
-    lineNos: true
-    style: github
+    noClasses: false      # ✅ 生成CSS类名，支持主题样式
+    # anchorLineNos: true # ✅ 注释掉，避免行号链接干扰
+    codeFences: true      # ✅ 启用代码围栏语法高亮
+    guessSyntax: true     # ✅ 自动检测代码语言
+    lineNos: true         # ✅ 显示行号
+    style: github         # ✅ GitHub风格配色
 
 # privacy:
 #   vimeo:
