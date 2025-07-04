@@ -13,6 +13,9 @@ TocOpen: true
 # 代码高亮测试
 
 ## Python 代码示例
+<details>
+
+<summary>点击展开代码</summary>
 
 ```python
 def hello_world():
@@ -22,6 +25,7 @@ def hello_world():
 for i in range(10):
     print(f"数字: {i}")
 ```
+</details>
 
 ## JavaScript 代码示例
 
