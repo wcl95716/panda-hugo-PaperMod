@@ -1,7 +1,7 @@
 ---
-title: "Social-Icons / Share-Icons"
+title: Social-Icons / Share-Icons
 summary: List of all Icons supported by PaperMod
-date: 2021-01-20
+date: "2025-07-04T23:35:05+0800"
 weight: 4
 aliases: ["/papermod-icons"]
 tags: ["PaperMod", "Docs"]

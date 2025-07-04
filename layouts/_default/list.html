@@ -57,16 +57,17 @@
 {{- else }}
 {{- /* 单级排序 - 处理 "Date:desc" 格式 */ -}}
 {{- if eq $orderBy "Date:desc" }}
-{{- $pages = sort $pages "Date" "desc" }}
+{{- /* 优先使用Lastmod（文件修改时间），如果没有则使用Date */ -}}
+{{- $pages = sort $pages "Lastmod" "desc" }}
 {{- else if eq $orderBy "Date:asc" }}
-{{- $pages = sort $pages "Date" "asc" }}
+{{- $pages = sort $pages "Lastmod" "asc" }}
 {{- else if eq $orderBy "Weight:desc" }}
 {{- $pages = sort $pages "Weight" "desc" }}
 {{- else if eq $orderBy "Weight:asc" }}
 {{- $pages = sort $pages "Weight" "asc" }}
 {{- else }}
-{{- /* 默认按日期降序 */ -}}
-{{- $pages = sort $pages "Date" "desc" }}
+{{- /* 默认按文件修改时间降序 */ -}}
+{{- $pages = sort $pages "Lastmod" "desc" }}
 {{- end }}
 {{- end }}
 {{- end }}

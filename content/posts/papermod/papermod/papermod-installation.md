@@ -1,7 +1,7 @@
 ---
-title: "Install / Update PaperMod"
+title: Install / Update PaperMod
 summary: Read aboout Install and Update instructions and sampled configuration templates
-date: 2021-01-20
+date: "2025-07-04T23:35:05+0800"
 series: ["PaperMod"]
 weight: 1
 aliases: ["/papermod-installation"]
@@ -10,8 +10,8 @@ author: ["Aditya Telange"]
 cover:
   image: images/papermod-cover.png
   hiddenInList: true
-social:
-  fediverse_creator: "@adityatelange@mastodon.social"
+  social:
+    fediverse_creator: "@adityatelange@mastodon.social"
 ---
 
 > - **We'll be using `yml/yaml` format for all examples down below, it is recommend to use `yaml` over `toml` as it is easier to read.**

@@ -1,7 +1,7 @@
 ---
-title: "Variables | Front Matter"
+title: Variables | Front Matter
 summary: List of Front Matter variables used by PaperMod
-date: 2021-01-20
+date: "2025-07-04T23:35:05+0800"
 tags: ["PaperMod", "Docs"]
 author: ["Aditya Telange"]
 draft: true

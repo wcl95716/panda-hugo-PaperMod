@@ -1,8 +1,8 @@
 ---
-author: "Hugo Authors"
-title: "Emoji Support"
-date: "2019-03-05"
-description: "Guide to emoji usage in Hugo"
+author: Hugo Authors
+title: Emoji Support
+date: "2025-07-04T23:35:05+0800"
+description: Guide to emoji usage in Hugo
 tags: ["emoji"]
 ShowToc: false
 ShowBreadCrumbs: false

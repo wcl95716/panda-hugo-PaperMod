@@ -1,8 +1,8 @@
 ---
 author: ["Hugo Authors", "PaperMod Contributors"]
-title: "Rich Content and Shortcodes"
-date: "2019-03-10"
-description: "A brief description of Hugo Shortcodes"
+title: Rich Content and Shortcodes
+date: "2025-07-04T23:35:05+0800"
+description: A brief description of Hugo Shortcodes
 tags: ["markdown", "shortcodes", "privacy"]
 ShowToc: true
 ---
