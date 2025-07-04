@@ -6,7 +6,7 @@ description: 推荐性价比高的VPS服务器，用于搭建个人VPN服务
 keywords: ["VPN", "VPS", "服务器", "翻墙", "代理"]
 tags: ["VPN", "VPS", "服务器", "技术"]
 categories: ["VPN搭建"]
-author: 作者
+author: Panda
 showToc: true
 TocOpen: true
 weight: 1
