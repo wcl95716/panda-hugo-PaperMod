@@ -26,3 +26,25 @@ iframe {
 .home-info {
     display: none !important;
 }
+
+/* 恢复Markdown默认的蓝色链接 */
+.post-content a {
+    color: #0066cc !important;
+    text-decoration: underline !important;
+    border-bottom: none !important;
+}
+
+.post-content a:hover {
+    color: #003d99 !important;
+    text-decoration: underline !important;
+}
+
+.dark .post-content a {
+    color: #66b3ff !important;
+    text-decoration: underline !important;
+}
+
+.dark .post-content a:hover {
+    color: #99ccff !important;
+    text-decoration: underline !important;
+}
