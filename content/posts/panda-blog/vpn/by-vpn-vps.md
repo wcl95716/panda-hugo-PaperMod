@@ -1,6 +1,6 @@
 ---
 title: 购买VPN服务器指南
-date: "2025-07-04T23:35:05+0800"
+date: "2025-07-04T19:58:29+0800"
 draft: false
 description: 推荐性价比高的VPS服务器，用于搭建个人VPN服务
 keywords: ["VPN", "VPS", "服务器", "翻墙", "代理"]
@@ -10,6 +10,7 @@ author: 作者
 showToc: true
 TocOpen: true
 weight: 1
+lastmod: "2025-07-04T23:43:04+0800"
 ---
 
 ## 概述

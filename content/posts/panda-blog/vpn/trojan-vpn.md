@@ -8,7 +8,8 @@ keywords: ["VPN搭建", "Trojan安装", "V2Ray配置", "BBR加速", "服务器�
 author: Admin
 showToc: true
 TocOpen: true
-date: "2025-07-04T23:35:05+0800"
+date: "2025-07-04T20:16:32+0800"
+lastmod: "2025-07-04T23:43:04+0800"
 ---
 # VPN 服务器搭建教程
 

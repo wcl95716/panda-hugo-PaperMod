@@ -84,6 +84,9 @@ params:
   ShowToc: true
   # comments: false
   images: ["images/papermod-cover.png"]
+  
+  # 时间格式配置
+  DateFormat: "2006-01-02 15:04"
 
   # 首页文章排序方式
   homePosts:

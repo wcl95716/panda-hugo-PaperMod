@@ -16,15 +16,13 @@ from typing import Optional, Tuple
 def get_file_times(filepath: Path) -> Tuple[Optional[datetime.datetime], Optional[datetime.datetime]]:
     """获取文件的创建时间和修改时间"""
     try:
-        # 获取文件状态
         stat = filepath.stat()
-        
-        # 创建时间（macOS/Linux）
-        created_time = datetime.datetime.fromtimestamp(stat.st_ctime)
-        
-        # 修改时间
+        # macOS 下用 st_birthtime，Linux 下用 st_ctime
+        if hasattr(stat, 'st_birthtime'):
+            created_time = datetime.datetime.fromtimestamp(stat.st_birthtime)
+        else:
+            created_time = datetime.datetime.fromtimestamp(stat.st_ctime)
         modified_time = datetime.datetime.fromtimestamp(stat.st_mtime)
-        
         return created_time, modified_time
     except Exception as e:
         print(f"❌ 获取文件时间失败: {e}")
@@ -135,8 +133,13 @@ def update_post_dates(filepath: Path, force_update: bool = False) -> bool:
             return False
         
         # 更新front matter
+        # date字段使用创建时间
         front_matter['date'] = format_date(created_time)
+        # lastmod字段使用修改时间（如果与创建时间不同）
         if modified_time and modified_time != created_time:
+            front_matter['lastmod'] = format_date(modified_time)
+        elif modified_time:
+            # 如果修改时间与创建时间相同，也设置lastmod
             front_matter['lastmod'] = format_date(modified_time)
         
         # 重新生成front matter内容
