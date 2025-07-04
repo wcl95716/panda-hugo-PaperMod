@@ -83,6 +83,16 @@ params:
   # comments: false
   images: ["images/papermod-cover.png"]
 
+  # 首页文章排序方式
+  homePosts:
+    # 按日期排序（推荐）
+    orderBy: "Date:desc"  # 最新文章在前
+    # 多级排序（备用）
+    # orderBy: ["Weight:desc", "Date:desc"]  # 权重高的在前，同权重按日期降序
+    # 单级排序（备用）
+    # orderBy: Date  # 可选: Date, Weight, Title, Length, PublishDate, ExpiryDate, Lastmod
+    # order: desc    # 可选: asc (升序) 或 desc (降序)
+
   profileMode:
     enabled: false
     title: Panda's Blog
@@ -103,19 +113,19 @@ params:
 
       - 欢迎探索并与我交流。
 
-  socialIcons:
-    - name: github
-      title: View Source on Github
-      url: "https://github.com/wcl95716/panda-hugo-PaperMod"
-    - name: Discord
-      title: Join discord community
-      url: "https://discord.gg/ahpmTvhVmp"
-    - name: X
-      title: Share PaperMod on X/Twitter
-      url: "https://x.com/intent/tweet/?text=Checkout%20Hugo%20PaperMod%20%E2%9C%A8%0AA%20fast,%20clean,%20responsive%20Hugo%20theme.&url=https://github.com/adityatelange/hugo-PaperMod&hashtags=Hugo,PaperMod"
-    - name: KoFi
-      title: Buy me a Ko-Fi :)
-      url: "https://ko-fi.com/adityatelange"
+  # socialIcons:
+  #   - name: github
+  #     title: View Source on Github
+  #     url: "https://github.com/wcl95716/panda-hugo-PaperMod"
+  #   - name: Discord
+  #     title: Join discord community
+  #     url: "https://discord.gg/ahpmTvhVmp"
+  #   - name: X
+  #     title: Share PaperMod on X/Twitter
+  #     url: "https://x.com/intent/tweet/?text=Checkout%20Hugo%20PaperMod%20%E2%9C%A8%0AA%20fast,%20clean,%20responsive%20Hugo%20theme.&url=https://github.com/adityatelange/hugo-PaperMod&hashtags=Hugo,PaperMod"
+  #   - name: KoFi
+  #     title: Buy me a Ko-Fi :)
+  #     url: "https://ko-fi.com/adityatelange"
 
   editPost:
     URL: "https://github.com/wcl95716/panda-hugo-PaperMod/tree/main/content"

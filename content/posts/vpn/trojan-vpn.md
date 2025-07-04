@@ -1,11 +1,11 @@
 ---
 title: "VPN 服务器搭建教程 - Trojan & V2Ray"
-date: 2024-01-15
-lastmod: 2024-01-15
+date: 2025-01-20
+lastmod: 2025-01-15
 draft: false
 description: "详细的Trojan和V2Ray VPN服务器搭建教程，包含BBR网络加速配置"
 tags: ["VPN", "Trojan", "V2Ray", "服务器", "网络加速", "BBR"]
-categories: ["技术教程", "网络","vpn 搭建"]
+categories: ["技术教程", "网络","VPN搭建"]
 keywords: ["VPN搭建", "Trojan安装", "V2Ray配置", "BBR加速", "服务器部署"]
 author: "Admin"
 showToc: true

@@ -1,0 +1,46 @@
+{{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{- /* 应用与首页相同的排序逻辑 */ -}}
+{{- if site.Params.homePosts }}
+{{- $orderBy := site.Params.homePosts.orderBy | default "Date" }}
+{{- if reflect.IsSlice $orderBy }}
+{{- /* 多级排序 */ -}}
+{{- range $orderBy }}
+{{- $parts := split . ":" }}
+{{- $field := index $parts 0 }}
+{{- $direction := index $parts 1 | default "desc" }}
+{{- $pages = sort $pages $field $direction }}
+{{- end }}
+{{- else }}
+{{- /* 单级排序 - 处理 "Date:desc" 格式 */ -}}
+{{- if eq $orderBy "Date:desc" }}
+{{- $pages = sort $pages "Date" "desc" }}
+{{- else if eq $orderBy "Date:asc" }}
+{{- $pages = sort $pages "Date" "asc" }}
+{{- else if eq $orderBy "Weight:desc" }}
+{{- $pages = sort $pages "Weight" "desc" }}
+{{- else if eq $orderBy "Weight:asc" }}
+{{- $pages = sort $pages "Weight" "asc" }}
+{{- else }}
+{{- /* 默认按日期降序 */ -}}
+{{- $pages = sort $pages "Date" "desc" }}
+{{- end }}
+{{- end }}
+{{- end }}
+{{- if and (gt (len $pages) 1) (in $pages . ) }}
+<nav class="paginav">
+  {{- with $pages.Next . }}
+  <a class="prev" href="{{ .Permalink }}">
+    <span class="title">« {{ i18n "prev_page" }}</span>
+    <br>
+    <span>{{- .Name -}}</span>
+  </a>
+  {{- end }}
+  {{- with $pages.Prev . }}
+  <a class="next" href="{{ .Permalink }}">
+    <span class="title">{{ i18n "next_page" }} »</span>
+    <br>
+    <span>{{- .Name -}}</span>
+  </a>
+  {{- end }}
+</nav>
+{{- end }} 
