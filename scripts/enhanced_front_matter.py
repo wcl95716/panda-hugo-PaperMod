@@ -17,13 +17,14 @@ CONFIG = {
     "author": "Panda",
     "content_dirs": ["content/posts/panda-blog"],
     "category_mapping": {
-        "panda-blog": "技术文档",
+        # "panda-blog": "Panda 技术文档",
         "想法": "创意想法",
         "vpn": "VPN技术",
-        "ACM": "算法竞赛",
+        "acm": "算法竞赛",
         "macos": "macOS",
         "server": "服务器",
-        "工具": "工具使用"
+        "工具": "工具使用",
+        "ros2": "ROS2 技术文档"
     }
 }
 
