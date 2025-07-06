@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Hugo文章Front Matter自动填充工具
-自动为文章添加创建时间、作者和分类信息
+自动为文章添加创建时间、作者、分类信息和最后修改时间
 """
 
 import os
@@ -39,6 +39,15 @@ def get_file_creation_time(file_path: Path) -> datetime.datetime:
             return datetime.datetime.fromtimestamp(stat.st_birthtime)
         else:
             return datetime.datetime.fromtimestamp(stat.st_ctime)
+    except Exception:
+        # 如果获取失败，使用当前时间
+        return datetime.datetime.now()
+
+def get_file_modification_time(file_path: Path) -> datetime.datetime:
+    """获取文件的最后修改时间"""
+    try:
+        stat = file_path.stat()
+        return datetime.datetime.fromtimestamp(stat.st_mtime)
     except Exception:
         # 如果获取失败，使用当前时间
         return datetime.datetime.now()
@@ -110,8 +119,9 @@ def parse_front_matter(content: str) -> Tuple[dict, str]:
 
 def generate_front_matter(metadata: dict, file_path: Path) -> str:
     """生成Front Matter"""
-    # 获取文件创建时间
+    # 获取文件创建时间和修改时间
     creation_time = get_file_creation_time(file_path)
+    modification_time = get_file_modification_time(file_path)
     
     # 只添加缺失的字段，已存在的字段保持不变
     if 'title' not in metadata:
@@ -119,6 +129,9 @@ def generate_front_matter(metadata: dict, file_path: Path) -> str:
     if 'date' not in metadata:
         # 生成ISO 8601格式的日期，包含时区信息
         metadata['date'] = f'"{creation_time.strftime("%Y-%m-%dT%H:%M:%S")}+0800"'
+    if 'lastmod' not in metadata:
+        # 添加最后修改时间
+        metadata['lastmod'] = f'"{modification_time.strftime("%Y-%m-%dT%H:%M:%S")}+0800"'
     if 'author' not in metadata:
         metadata['author'] = CONFIG["author"]
     if 'categories' not in metadata:
