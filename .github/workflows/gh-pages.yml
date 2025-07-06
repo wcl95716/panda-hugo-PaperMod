@@ -74,7 +74,7 @@ jobs:
           echo "📄 检查 markdown 文件:"
           find content/posts -name "*.md" | head -5
           echo "🚀 运行 Front Matter 生成脚本..."
-          python3 scripts/enhanced_front_matter.py --force
+          python3 scripts/enhanced_front_matter.py --force --force-git
           echo "✅ Front Matter 生成完成"
           echo "📊 显示处理后的文件:"
           find content/posts -name "*.md" -exec head -5 {} \; | head -20
