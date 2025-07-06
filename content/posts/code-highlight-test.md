@@ -1,15 +1,3 @@
----
-title: 代码高亮测试
-date: "2025-01-15T10:00:00+0800"
-draft: false
-description: 测试PaperMod主题的代码高亮功能
-tags: ["测试", "代码高亮"]
-categories: ["测试"]
-author: Panda
-showToc: true
-TocOpen: true
----
-
 # 代码高亮测试
 
 ## Python 代码示例

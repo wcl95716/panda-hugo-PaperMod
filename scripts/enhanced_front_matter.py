@@ -46,10 +46,24 @@ def parse_arguments():
 def get_git_creation_time(file_path: Path) -> Optional[datetime.datetime]:
     """从Git历史获取文件的首次提交时间（最准确的创建时间）"""
     try:
+        # 检查文件是否在子仓库中
+        current_dir = file_path.parent
+        git_dir = None
+        
+        # 向上查找.git目录
+        while current_dir != current_dir.parent:
+            if (current_dir / '.git').exists():
+                git_dir = current_dir
+                break
+            current_dir = current_dir.parent
+        
+        if not git_dir:
+            return None
+        
         # 获取文件的首次提交时间
         result = subprocess.run(
-            ['git', 'log', '--follow', '--format=%aI', '--', str(file_path)],
-            capture_output=True, text=True, cwd=file_path.parent.parent.parent
+            ['git', 'log', '--follow', '--format=%aI', '--', str(file_path.relative_to(git_dir))],
+            capture_output=True, text=True, cwd=git_dir
         )
         
         if result.returncode == 0 and result.stdout.strip():
@@ -67,10 +81,24 @@ def get_git_creation_time(file_path: Path) -> Optional[datetime.datetime]:
 def get_git_last_modified_time(file_path: Path) -> Optional[datetime.datetime]:
     """从Git历史获取文件的最后修改时间"""
     try:
+        # 检查文件是否在子仓库中
+        current_dir = file_path.parent
+        git_dir = None
+        
+        # 向上查找.git目录
+        while current_dir != current_dir.parent:
+            if (current_dir / '.git').exists():
+                git_dir = current_dir
+                break
+            current_dir = current_dir.parent
+        
+        if not git_dir:
+            return None
+        
         # 获取文件的最后提交时间
         result = subprocess.run(
-            ['git', 'log', '-1', '--format=%aI', '--', str(file_path)],
-            capture_output=True, text=True, cwd=file_path.parent.parent.parent
+            ['git', 'log', '-1', '--format=%aI', '--', str(file_path.relative_to(git_dir))],
+            capture_output=True, text=True, cwd=git_dir
         )
         
         if result.returncode == 0 and result.stdout.strip():
