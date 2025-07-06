@@ -169,7 +169,7 @@ params:
       isCaseSensitive: false         # 是否区分大小写（false=不区分，推荐）
       shouldSort: true               # 是否对搜索结果排序（true=相关性高的排前面）
       location: 0                    # 匹配位置的权重（一般保持0即可）
-      distance: 1000                 # 匹配字符间最大距离（越大越宽松，1000=很宽松）
+      distance: 30                 # 匹配字符间最大距离（越大越宽松，1000=很宽松）
       threshold: 0.4                 # 匹配阈值（0~1，越小越严格，0.4=默认，0=完全匹配，1=最宽松）
       minMatchCharLength: 0          # 最小匹配字符数（0=不限，设大点可过滤短词）
       keys: ["title", "permalink", "summary", "content"]  # 搜索哪些字段
