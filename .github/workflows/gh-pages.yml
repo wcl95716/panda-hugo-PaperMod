@@ -58,7 +58,7 @@ jobs:
         # git clone --depth=1 https://github.com/wcl95716/panda_wiki.git content/posts/panda_wiki
         # git clone --depth=1 https://github.com/wcl95716/panda_wiki.git content/posts/panda_wiki
         run: |
-          git clone --depth=1 https://github.com/wcl95716/panda_wiki.git content/posts/panda_wiki
+          svn export https://github.com/wcl95716/panda_wiki/trunk/panda-blog content/posts/panda_wiki
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
