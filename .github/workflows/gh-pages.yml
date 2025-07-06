@@ -17,6 +17,9 @@ on:
         description: "Hugo Version"
         required: false
         default: "0.146.0"
+  schedule:
+    # 每天凌晨2点执行 (UTC时间)
+    - cron: '0 2 * * *'
 
 # Allow one concurrent deployment
 concurrency:
