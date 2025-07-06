@@ -55,7 +55,7 @@ jobs:
       - name: Clone panda_wiki content
         # 克隆仓库并只保留 panda-blog 文件夹
         run: |
-          git clone --depth=1 https://github.com/wcl95716/panda_wiki.git content/posts/panda_wiki
+          git clone https://github.com/wcl95716/panda_wiki.git content/posts/panda_wiki
           cd content/posts/panda_wiki && find . -mindepth 1 -maxdepth 1 ! -name 'panda-blog' -exec rm -rf {} +
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -73,6 +73,12 @@ jobs:
           find content/posts -type d | head -10
           echo "📄 检查 markdown 文件:"
           find content/posts -name "*.md" | head -5
+          echo "🔍 检查Git仓库状态:"
+          echo "主仓库Git状态:"
+          git log --oneline -3
+          echo "panda_wiki仓库Git状态:"
+          cd content/posts/panda_wiki && git log --oneline -3
+          cd ../../..
           echo "🚀 运行 Front Matter 生成脚本..."
           python3 scripts/enhanced_front_matter.py --force --force-git
           echo "✅ Front Matter 生成完成"

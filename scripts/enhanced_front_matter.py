@@ -57,12 +57,38 @@ def get_git_creation_time(file_path: Path) -> Optional[datetime.datetime]:
                 break
             current_dir = current_dir.parent
         
+        # 如果没找到，尝试从当前工作目录开始查找
+        if not git_dir:
+            current_dir = Path.cwd()
+            while current_dir != current_dir.parent:
+                if (current_dir / '.git').exists():
+                    git_dir = current_dir
+                    break
+                current_dir = current_dir.parent
+        
         if not git_dir:
             return None
         
+        # 检查是否是浅克隆
+        try:
+            result = subprocess.run(
+                ['git', 'rev-parse', '--is-shallow-repository'],
+                capture_output=True, text=True, cwd=git_dir
+            )
+            is_shallow = result.returncode == 0 and result.stdout.strip() == 'true'
+        except Exception:
+            is_shallow = False
+        
+        # 计算相对于Git目录的路径
+        try:
+            relative_path = file_path.relative_to(git_dir)
+        except ValueError:
+            # 如果文件不在Git目录内，尝试使用绝对路径
+            relative_path = file_path
+        
         # 获取文件的首次提交时间
         result = subprocess.run(
-            ['git', 'log', '--follow', '--format=%aI', '--', str(file_path.relative_to(git_dir))],
+            ['git', 'log', '--follow', '--format=%aI', '--', str(relative_path)],
             capture_output=True, text=True, cwd=git_dir
         )
         
@@ -73,6 +99,7 @@ def get_git_creation_time(file_path: Path) -> Optional[datetime.datetime]:
                 # 解析ISO 8601格式的时间
                 time_str = lines[-1].strip()
                 return datetime.datetime.fromisoformat(time_str.replace('Z', '+00:00'))
+            
     except Exception as e:
         print(f"警告: 无法从Git获取创建时间 {file_path}: {e}")
     
@@ -92,12 +119,28 @@ def get_git_last_modified_time(file_path: Path) -> Optional[datetime.datetime]:
                 break
             current_dir = current_dir.parent
         
+        # 如果没找到，尝试从当前工作目录开始查找
+        if not git_dir:
+            current_dir = Path.cwd()
+            while current_dir != current_dir.parent:
+                if (current_dir / '.git').exists():
+                    git_dir = current_dir
+                    break
+                current_dir = current_dir.parent
+        
         if not git_dir:
             return None
         
+        # 计算相对于Git目录的路径
+        try:
+            relative_path = file_path.relative_to(git_dir)
+        except ValueError:
+            # 如果文件不在Git目录内，尝试使用绝对路径
+            relative_path = file_path
+        
         # 获取文件的最后提交时间
         result = subprocess.run(
-            ['git', 'log', '-1', '--format=%aI', '--', str(file_path.relative_to(git_dir))],
+            ['git', 'log', '-1', '--format=%aI', '--', str(relative_path)],
             capture_output=True, text=True, cwd=git_dir
         )
         
