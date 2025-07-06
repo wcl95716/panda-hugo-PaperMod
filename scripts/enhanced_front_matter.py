@@ -117,7 +117,8 @@ def generate_front_matter(metadata: dict, file_path: Path) -> str:
     if 'title' not in metadata:
         metadata['title'] = file_path.stem
     if 'date' not in metadata:
-        metadata['date'] = creation_time.strftime('%Y-%m-%d %H:%M')
+        # 生成ISO 8601格式的日期，包含时区信息
+        metadata['date'] = f'"{creation_time.strftime("%Y-%m-%dT%H:%M:%S")}+0800"'
     if 'author' not in metadata:
         metadata['author'] = CONFIG["author"]
     if 'categories' not in metadata:
