@@ -1,18 +1,3 @@
----
-title: 购买VPN服务器指南
-date: "2025-07-04T19:58:29+0800"
-draft: false
-description: 推荐性价比高的VPS服务器，用于搭建个人VPN服务
-keywords: ["VPN", "VPS", "服务器", "翻墙", "代理"]
-tags: ["VPN", "VPS", "服务器", "技术"]
-author: Panda
-showToc: true
-TocOpen: true
-weight: 1
-lastmod: "2025-07-04T23:43:04+0800"
-categories: ["Panda 技术文档", "VPN技术"]
----
-
 ## 概述
 
 在搭建个人VPN服务时，选择合适的VPS服务器是关键。本文将推荐一些性价比高的VPS提供商，帮助您找到最适合的服务器。

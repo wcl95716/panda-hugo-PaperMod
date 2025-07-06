@@ -1,15 +1,3 @@
----
-title: VPN 服务器搭建教程 - Trojan & V2Ray
-draft: false
-description: 详细的Trojan和V2Ray VPN服务器搭建教程，包含BBR网络加速配置
-tags: ["VPN", "Trojan", "V2Ray", "BBR"]
-keywords: ["VPN搭建", "Trojan安装", "V2Ray配置", "BBR加速", "服务器部署"]
-author: Panda
-showToc: true
-TocOpen: true
-date: "2025-07-04T20:16:32+0800"
-categories: ["Panda 技术文档", "VPN技术"]
----
 # VPN 服务器搭建教程
 
 ## [Trojan VPN 搭建](https://github.com/Jrohy/trojan)
