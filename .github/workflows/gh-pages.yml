@@ -54,7 +54,7 @@ jobs:
           ref: main
       - name: Clone panda_wiki content
         run: |
-          git clone https://github.com/wcl95716/panda_wiki.git content/posts/panda_wiki
+          git clone https://github.com/panda-wayback/panda_wiki.git content/posts/panda_wiki
           cd content/posts/panda_wiki
           # 只保留 panda-blog 文件夹和 .git
           find . -mindepth 1 -maxdepth 1 ! -name 'panda-blog' ! -name '.git' -exec rm -rf {} +

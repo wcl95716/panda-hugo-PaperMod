@@ -1,8 +1,8 @@
 # If your site is in 'https', then make sure your base url isn't written using 'http' otherwise your sitemap would
 # contain http (as opposeed to https) URLs. This would affect Google indexing of your URLs.
-baseURL: "https://wcl95716.github.io/panda-hugo-PaperMod/"
+baseURL: "https://panda-wayback.github.io/panda-hugo-PaperMod/"
 title: Panda's Blog
-copyright: "© [Panda](https://github.com/wcl95716)"
+copyright: "© [Panda](https://github.com/panda-wayback)"
 theme: [hugo-PaperMod]
 defaultContentLanguage: "zh"
 
@@ -65,7 +65,7 @@ outputs:
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
-  description: "Panda's Personal Blog - https://github.com/wcl95716/panda-hugo-PaperMod"
+  description: "Panda's Personal Blog - https://github.com/panda-wayback/panda-hugo-PaperMod"
   author: Panda
   # author: ["Me", "You"] # multiple authors
 
@@ -126,7 +126,7 @@ params:
   # socialIcons:
   #   - name: github
   #     title: View Source on Github
-  #     url: "https://github.com/wcl95716/panda-hugo-PaperMod"
+  #     url: "https://github.com/panda-wayback/panda-hugo-PaperMod"
   #   - name: Discord
   #     title: Join discord community
   #     url: "https://discord.gg/ahpmTvhVmp"
@@ -138,7 +138,7 @@ params:
   #     url: "https://ko-fi.com/adityatelange"
 
   editPost:
-    URL: "https://github.com/wcl95716/panda-hugo-PaperMod/tree/main/content"
+    URL: "https://github.com/panda-wayback/panda-hugo-PaperMod/tree/main/content"
     Text: "编辑此页面" # edit text
     appendFilePath: true # to append file path to Edit link
 
