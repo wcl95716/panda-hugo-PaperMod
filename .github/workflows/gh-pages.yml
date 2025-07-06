@@ -49,6 +49,13 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
+      - name: Clone panda_wiki content
+        # 将 panda_wiki 的内容克隆到 content/posts/panda_wiki 目录下
+        # 还可以扩展更多的git仓库，比如：
+        # git clone --depth=1 https://github.com/wcl95716/panda_wiki.git content/posts/panda_wiki
+        # git clone --depth=1 https://github.com/wcl95716/panda_wiki.git content/posts/panda_wiki
+        run: |
+          git clone --depth=1 https://github.com/wcl95716/panda_wiki.git content/posts/panda_wiki
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
