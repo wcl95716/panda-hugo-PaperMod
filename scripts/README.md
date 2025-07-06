@@ -45,7 +45,7 @@ panda-blog/          → 技术文档
 ### 基本用法
 
 ```bash
-# 处理所有文章（默认目录：panda-blog 和 想法）
+# 处理所有文章（默认目录：panda-blog 和 panda_wiki）
 python3 scripts/enhanced_front_matter.py
 
 # 预览模式（不实际修改文件）
@@ -64,21 +64,49 @@ python3 scripts/enhanced_front_matter.py --author "你的名字"
 # 处理单个文件
 python3 scripts/enhanced_front_matter.py --file "panda-blog/vpn/trojan-vpn.md"
 
-# 指定自定义内容目录
-python3 scripts/enhanced_front_matter.py --content-dirs "custom-dir" "another-dir"
-
-# 仅更新日期相关字段
-python3 scripts/enhanced_front_matter.py --update-dates
-
-# 仅更新最后修改时间
-python3 scripts/enhanced_front_matter.py --update-lastmod
-
-# 使用当前时间作为修改时间
-python3 scripts/enhanced_front_matter.py --update-lastmod --use-current-time
-
-# 组合使用：强制更新所有文件的修改时间为当前时间
-python3 scripts/enhanced_front_matter.py --update-lastmod --use-current-time --force
+# 指定内容目录
+python3 scripts/enhanced_front_matter.py --content-dirs "content/posts/panda-blog" "content/posts/panda_wiki"
 ```
+
+## 🤖 GitHub Actions 集成
+
+### 自动化工作流
+
+脚本已集成到 GitHub Actions 工作流中，这意味着：
+
+1. **自动执行**：每次推送代码或定时任务时自动运行
+2. **无需手动操作**：专注于文档内容，无需担心 Front Matter 格式
+3. **处理多源内容**：自动处理本地内容和从 `panda_wiki` 仓库克隆的内容
+
+### 工作流步骤
+
+在 `.github/workflows/gh-pages.yml` 中，脚本会在以下步骤后执行：
+
+1. ✅ 克隆 `panda_wiki` 仓库内容
+2. 🔧 **自动生成 Front Matter**（新增）
+3. 🏗️ 构建 Hugo 站点
+4. 🚀 部署到 GitHub Pages
+
+### 优势
+
+- **专注内容创作**：只需写 Markdown 内容，无需手动添加 Front Matter
+- **自动时间管理**：基于 Git 历史自动设置准确的创建时间
+- **智能分类**：根据文件路径自动生成合适的分类
+- **统一格式**：确保所有文章都有一致的 Front Matter 格式
+
+### 本地开发
+
+如果你想在本地测试，仍然可以使用：
+
+```bash
+# 本地运行脚本
+python3 scripts/enhanced_front_matter.py --force
+
+# 启动 Hugo 服务器
+make serve
+```
+
+这样你就可以专注于文档内容创作，而不用担心 Front Matter 的格式问题！
 
 ## 生成的 Front Matter 示例
 

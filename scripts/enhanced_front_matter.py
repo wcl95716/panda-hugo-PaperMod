@@ -15,7 +15,7 @@ from typing import Optional, Tuple, List
 # 配置信息
 CONFIG = {
     "author": "Panda",
-    "content_dirs": ["content/posts/panda-blog"],
+    "content_dirs": ["content/posts/panda-blog", "content/posts/panda_wiki"],
     "category_mapping": {
         # "panda-blog": "Panda 技术文档",
         "想法": "创意想法",
