@@ -12,6 +12,7 @@ import argparse
 from pathlib import Path
 import subprocess
 from typing import Optional, Tuple, List
+import ast
 
 # 配置信息
 CONFIG = {
@@ -195,6 +196,37 @@ def get_category_from_path(file_path: Path) -> str:
     # 如果没有映射，直接使用目录名
     return parent_dir
 
+def get_tags_from_path(file_path: Path) -> List[str]:
+    """从文件路径推断标签，只添加在配置中有映射的目录名"""
+    # 获取相对于content目录的路径
+    content_path = None
+    for content_dir in CONFIG["content_dirs"]:
+        try:
+            content_path = file_path.relative_to(Path(content_dir))
+            break
+        except ValueError:
+            continue
+    
+    if not content_path:
+        return []
+    
+    # 获取所有父目录名作为标签，但只添加在配置中有映射的
+    tags = []
+    current_path = content_path.parent
+    
+    # 从最深层开始，向上遍历所有父目录
+    while current_path != Path('.'):
+        dir_name = current_path.name
+        # 只添加在配置中有映射的目录名
+        if dir_name in CONFIG["category_mapping"]:
+            tags.append(CONFIG["category_mapping"][dir_name])
+        current_path = current_path.parent
+    
+    # 反转列表，使标签按层级顺序排列（从根到叶）
+    tags.reverse()
+    
+    return tags
+
 # ==================== Front Matter 处理函数 ====================
 
 def parse_front_matter(content: str) -> Tuple[dict, str]:
@@ -238,11 +270,23 @@ def parse_front_matter(content: str) -> Tuple[dict, str]:
                     current_key = key
                     current_list = []
                 else:
-                    metadata[key] = value
+                    # 尝试将tags字符串转为列表
+                    if key == 'tags' and value.startswith('[') and value.endswith(']'):
+                        try:
+                            metadata[key] = ast.literal_eval(value)
+                        except Exception:
+                            metadata[key] = value
+                    else:
+                        metadata[key] = value
         
         # 处理最后的列表
         if current_list:
             metadata[current_key] = current_list
+        
+        # 处理嵌套列表的情况（如tags: [["tag1", "tag2"]]）
+        for key, value in metadata.items():
+            if isinstance(value, list) and len(value) == 1 and isinstance(value[0], list):
+                metadata[key] = value[0]
         
         return metadata, markdown_content
     else:
@@ -267,6 +311,33 @@ def generate_front_matter(metadata: dict, file_path: Path, force: bool = False, 
         metadata['author'] = CONFIG["author"]
     if force or 'categories' not in metadata:
         metadata['categories'] = [get_category_from_path(file_path)]
+    
+    # 处理标签：追加模式，不替换现有标签
+    path_tags = get_tags_from_path(file_path)
+    if 'tags' in metadata:
+        # 如果已有标签，合并并去重
+        existing_tags = metadata['tags']
+        # 兼容字符串、列表
+        if isinstance(existing_tags, str):
+            if existing_tags.startswith('[') and existing_tags.endswith(']'):
+                try:
+                    existing_tags = ast.literal_eval(existing_tags)
+                except Exception:
+                    existing_tags = [existing_tags]
+            else:
+                existing_tags = [existing_tags]
+        all_tags = existing_tags + path_tags
+        # 去重并保持顺序
+        seen = set()
+        unique_tags = []
+        for tag in all_tags:
+            if tag not in seen:
+                seen.add(tag)
+                unique_tags.append(tag)
+        metadata['tags'] = unique_tags
+    else:
+        # 如果没有标签，直接使用路径标签
+        metadata['tags'] = path_tags
     
     # 生成YAML格式的Front Matter
     yaml_lines = ['---']
