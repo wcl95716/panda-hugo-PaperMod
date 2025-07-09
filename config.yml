@@ -182,7 +182,7 @@ markup:
     noClasses: false      # ✅ 生成CSS类名，支持主题样式
     # anchorLineNos: true # ✅ 注释掉，避免行号链接干扰
     codeFences: true      # ✅ 启用代码围栏语法高亮
-    guessSyntax: false    # ❌ 禁用自动检测，避免错误识别
+    guessSyntax: true    # ❌ 禁用自动检测，避免错误识别
     lineNos: true         # ✅ 显示行号
     style: github         # ✅ GitHub风格配色
 
