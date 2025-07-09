@@ -197,7 +197,7 @@ def get_category_from_path(file_path: Path) -> str:
     return parent_dir
 
 def get_tags_from_path(file_path: Path) -> List[str]:
-    """从文件路径推断标签，只添加在配置中有映射的目录名"""
+    """从文件路径推断标签，添加所有目录名但排除基础路径前缀"""
     # 获取相对于content目录的路径
     content_path = None
     for content_dir in CONFIG["content_dirs"]:
@@ -210,16 +210,18 @@ def get_tags_from_path(file_path: Path) -> List[str]:
     if not content_path:
         return []
     
-    # 获取所有父目录名作为标签，但只添加在配置中有映射的
+    # 获取所有父目录名作为标签
     tags = []
     current_path = content_path.parent
     
     # 从最深层开始，向上遍历所有父目录
     while current_path != Path('.'):
         dir_name = current_path.name
-        # 只添加在配置中有映射的目录名
+        # 如果有映射就用映射的值，没有映射就用原始目录名
         if dir_name in CONFIG["category_mapping"]:
             tags.append(CONFIG["category_mapping"][dir_name])
+        else:
+            tags.append(dir_name)
         current_path = current_path.parent
     
     # 反转列表，使标签按层级顺序排列（从根到叶）
