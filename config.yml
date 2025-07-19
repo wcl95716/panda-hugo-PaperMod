@@ -23,7 +23,7 @@ minify:
 
 pagination:
   disableAliases: false
-  pagerSize: 5
+  pagerSize: 20  # 修改为每页显示10篇文章
 
 languages:
   zh:
